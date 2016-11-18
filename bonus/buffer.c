@@ -43,7 +43,7 @@ t_map	fill_map(char *buffer, t_map map)
 	  x = 0;
 	  buffer++;
 	}
-      map.tab[i] = sfVector_from3f(x, y, (float) my_atoi(buffer) + (perlin2d(x + inc, y, 0.1, 6) * 6));
+      map.tab[i] = sfVector_from3f(x, y, (float) my_atoi(buffer) + (perlin2d(x, y + inc, 0.1, 6) * 6));
       buffer += my_nbrlen(map.tab[i].z) + 1;
       i++;
       x++;
