@@ -41,8 +41,8 @@ t_map	fill_map(char *buffer, t_map map)
 	  x = 0;
 	  buffer++;
 	}
-      map.tab[i] = sfVector_from3f(x, y, (float) my_atoi(buffer));
-      buffer += my_nbrlen(map.tab[i].z) + 1;
+      map.tab[i] = sfVector_from3f(x * 75, y * 75, (float) my_atoi(buffer) * 60);
+      buffer += my_nbrlen(my_atoi(buffer)) + 1;
       i++;
       x++;
     }

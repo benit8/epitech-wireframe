@@ -12,30 +12,30 @@
 
 sfVector2f	sfVector_from2f(float x, float y)
 {
-  sfVector2f	res;
+  sfVector2f	vector;
 
-  res.x = x;
-  res.y = y;
-  return (res);
+  vector.x = x;
+  vector.y = y;
+  return (vector);
 }
 
 sfVector3f	sfVector_from3f(float x, float y, float z)
 {
-  sfVector3f	res;
+  sfVector3f	vector;
 
-  res.x = x;
-  res.y = y;
-  res.z = z;
-  return (res);
+  vector.x = x;
+  vector.y = y;
+  vector.z = z;
+  return (vector);
 }
 
 sfVector2f	my_convert_point(sfVector3f p, int xoff, int yoff)
 {
-  sfVector2f	res;
+  sfVector2f	vector;
   int		factor;
 
   factor = 50;
-  res.x = (p.x * factor + xoff) - (p.y * (factor / 2));
-  res.y = (-p.z * (factor / 4) + yoff) + (p.y * (factor / 2));
-  return (res);
+  vector.x = (p.x * factor + xoff) - (p.y * (factor / 2));
+  vector.y = (-p.z * (factor / 4) + yoff) + (p.y * (factor / 2));
+  return (vector);
 }

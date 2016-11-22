@@ -1,7 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
-#include <limits.h>
-#include <time.h>
 
 static long long SEED = 22;
 static int hash[]   =	{208,  34, 231, 213,  32, 248, 233,  56, 161,  78,  24, 140,  71,  48, 140, 254, 245, 255, 247, 247,  40,

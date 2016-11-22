@@ -25,6 +25,22 @@ char	*read_file(char *path, char *buffer)
   return (buffer);
 }
 
+void	get_map_size(char *buffer, int *w, int *h)
+{
+  int	i;
+
+  i = 0;
+  while (buffer[i] != '\0')
+    {
+      if (buffer[i] == '\n')
+        {
+          (*h)++;
+          *w = (*w == -1) ? (i / 2) : *w;
+        }
+      i++;
+    }
+}
+
 t_map	fill_map(char *buffer, t_map map)
 {
   int	i;
@@ -43,7 +59,7 @@ t_map	fill_map(char *buffer, t_map map)
 	  x = 0;
 	  buffer++;
 	}
-      map.tab[i] = sfVector_from3f(x, y, (float) my_atoi(buffer) + (perlin2d(x, y + inc, 0.1, 6) * 6));
+      map.tab[i] = sfVector_from3f(x, y, (float) my_atoi(buffer) + (perlin2d(x + inc, y, 0.15, 6) * 6));
       buffer += my_nbrlen(map.tab[i].z) + 1;
       i++;
       x++;
@@ -54,7 +70,6 @@ t_map	fill_map(char *buffer, t_map map)
 
 t_map	parse_buffer(char *path)
 {
-  int	i;
   int	w;
   int	h;
   char	*buffer;
@@ -62,19 +77,10 @@ t_map	parse_buffer(char *path)
 
   w = -1;
   h = 0;
-  i = 0;
   if ((buffer = malloc(sizeof(char) * (1025))) == NULL)
     return (map);
   read_file(path, buffer);
-  while (buffer[i] != '\0')
-    {
-      if (buffer[i] == '\n')
-        {
-          h++;
-          w = (w == -1) ? (i / 2) : w;
-        }
-      i++;
-    }
+  get_map_size(buffer, &w, &h);
   map.width = w;
   map.height = h;
   if ((map.tab = malloc(sizeof(sfVector3f) * (w * h))) == NULL)

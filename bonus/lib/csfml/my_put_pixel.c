@@ -28,18 +28,21 @@ sfColor		my_color_add(sfColor color1, sfColor color2)
 
 void	my_put_pixel(t_my_framebuffer *fb, int x, int y, sfColor color)
 {
-  int		w;
+  int		idx;
   sfColor	current;
   sfColor	new;
 
-  w = fb->width;
-  current = sfColor_fromRGBA(fb->pixels[(w * y + x) * 4 + 0],
-			     fb->pixels[(w * y + x) * 4 + 1],
-			     fb->pixels[(w * y + x) * 4 + 2],
-			     fb->pixels[(w * y + x) * 4 + 3]);
-  new = my_color_add(color, current);
-  fb->pixels[(w * y + x) * 4 + 0] = new.r;
-  fb->pixels[(w * y + x) * 4 + 1] = new.g;
-  fb->pixels[(w * y + x) * 4 + 2] = new.b;
-  fb->pixels[(w * y + x) * 4 + 3] = new.a;
+  idx = (fb->width * y + x) * 4;
+  if (idx >= 0)
+    {
+      current = sfColor_fromRGBA(fb->pixels[idx + 0],
+				 fb->pixels[idx + 1],
+				 fb->pixels[idx + 2],
+			 	 fb->pixels[idx + 3]);
+      new = my_color_add(color, current);
+      fb->pixels[idx + 0] = new.r;
+      fb->pixels[idx + 1] = new.g;
+      fb->pixels[idx + 2] = new.b;
+      fb->pixels[idx + 3] = new.a;
+    }
 }

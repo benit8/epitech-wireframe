@@ -57,9 +57,9 @@ void			my_draw_line(t_my_framebuffer *fb,
 				     sfVector2f from,
 				     sfVector2f to,
 				     sfColor color);
-sfVector2f		my_convert_point(sfVector3f point,
-					 int width,
-					 int height);
+sfVector2f		my_parallel_projection(sfVector3f pos3d,
+					       float angle);
+sfVector2f		my_isometric_projection(sfVector3f pos3d);
 void			my_draw_line_3d(t_my_framebuffer *fb,
 					sfVector3f a,
 					sfVector3f b,

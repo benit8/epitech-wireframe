@@ -16,16 +16,18 @@ CFLAGS	+=	-lm
 
 RM	=	rm -f
 
-SRC	=	main.c			\
-		buffer.c		\
-		src/my_atoi.c		\
-		src/my_nbrlen.c		\
-		src/my_framebuffer.c	\
-		src/my_put_pixel.c	\
-		src/my_put_square.c	\
-		src/my_draw_line.c	\
-		src/my_convert_point.c	\
-		src/my_draw_grid.c	\
+SRC	=	main.c				\
+		buffer.c			\
+		src/my_atoi.c			\
+		src/my_nbrlen.c			\
+		src/my_framebuffer.c		\
+		src/my_put_pixel.c		\
+		src/my_put_square.c		\
+		src/my_draw_line.c		\
+		src/my_convert_point.c		\
+		src/my_parallel_projection.c	\
+		src/my_isometric_projection.c	\
+		src/my_draw_grid.c		\
 		src/my_join_points.c
 
 OBJ	=	$(SRC:.c=.o)

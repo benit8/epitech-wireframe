@@ -44,7 +44,7 @@ void    my_draw_line_3d(t_my_framebuffer *fb, sfVector3f a, sfVector3f b, sfColo
   sfVector2f  a2;
   sfVector2f  b2;
 
-  a2 = my_convert_point(a, 225, 200);
-  b2 = my_convert_point(b, 225, 200);
+  a2 = my_parallel_projection(a, 30);
+  b2 = my_parallel_projection(b, 30);
   my_draw_line(fb, a2, b2, color);
 }

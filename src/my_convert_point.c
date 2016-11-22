@@ -28,14 +28,3 @@ sfVector3f	sfVector_from3f(float x, float y, float z)
   res.z = z;
   return (res);
 }
-
-sfVector2f	my_convert_point(sfVector3f p, int xoff, int yoff)
-{
-  sfVector2f	res;
-  int		factor;
-
-  factor = 50;
-  res.x = (p.x * factor + xoff) - (p.y * (factor / 2));
-  res.y = (-p.z * (factor / 4) + yoff) + (p.y * (factor / 2));
-  return (res);
-}

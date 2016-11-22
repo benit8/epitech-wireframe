@@ -5,29 +5,21 @@
 ## Login   <benoit.lormeau@epitech.net>
 ## 
 ## Started on  Mon Nov 14 18:08:58 2016 Benoit Lormeau
-## Last update Tue Nov 15 21:47:31 2016 Benoit Lormeau
+## Last update Fri Nov 18 16:47:20 2016 Benoit Lormeau
 ##
 
 CC	=	gcc
 
-CFLAGS	+=	-Iinclude/
-CFLAGS	+=	-lc_graph_prog
-CFLAGS	+=	-lm
-
 RM	=	rm -f
 
-SRC	=	main.c			\
-		buffer.c		\
-		perlin.c		\
-		src/my_atoi.c		\
-		src/my_nbrlen.c		\
-		src/my_framebuffer.c	\
-		src/my_put_pixel.c	\
-		src/my_put_square.c	\
-		src/my_draw_line.c	\
-		src/my_convert_point.c	\
-		src/my_draw_grid.c	\
-		src/my_join_points.c
+CFLAGS	+=	-W -Wall -Werror -Wextra
+CFLAGS	+=	-Iinclude/
+CFLAGS	+=	-lc_graph_prog
+CFLAGS	+=	-Llib -lcsfml -lmy
+
+SRC	=	src/main.c		\
+		src/buffer.c		\
+		src/perlin.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -36,7 +28,11 @@ NAME	=	wireframe
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) -W -Wall -Werror -Wextra -Iinclude/ -lc_graph_prog -lm
+	$(CC) -o $(NAME) $(OBJ) $(CFLAGS)
+
+lib:
+	cd lib/my && make
+	cd lib/csfml && make
 
 clean:
 	$(RM) $(OBJ)
@@ -46,4 +42,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+gen:
+	gcc -o misc/gen misc/generate_wf.c
+
+.PHONY: all clean fclean re lib
