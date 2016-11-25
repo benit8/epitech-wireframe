@@ -14,4 +14,6 @@
 void	set_seed();
 float	perlin2d(float x, float y, float freq, int depth);
 
+extern float	inc_;
+
 #endif

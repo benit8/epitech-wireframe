@@ -11,6 +11,8 @@
 #include "buffer.h"
 #include "perlin.h"
 
+float	inc_;
+
 char	*read_file(char *path, char *buffer)
 {
   int	fd;
@@ -19,7 +21,7 @@ char	*read_file(char *path, char *buffer)
   fd = open(path, O_RDONLY);
   if (fd < 3)
     return (NULL);
-  bytes = read(fd, buffer, 1024);
+  bytes = read(fd, buffer, 32768);
   buffer[bytes] = '\0';
   close(fd);
   return (buffer);
@@ -41,12 +43,12 @@ void	get_map_size(char *buffer, int *w, int *h)
     }
 }
 
-t_map	fill_map(char *buffer, t_map map)
+t_map		fill_map(char *buffer, t_map map)
 {
-  int	i;
-  int	x;
-  int	y;
-  static int inc;
+  int		i;
+  int		x;
+  int		y;
+  static float inc;
 
   i = 0;
   x = 0;
@@ -59,12 +61,12 @@ t_map	fill_map(char *buffer, t_map map)
 	  x = 0;
 	  buffer++;
 	}
-      map.tab[i] = sfVector_from3f(x, y, (float) my_atoi(buffer) + (perlin2d(x + inc, y, 0.15, 6) * 6));
-      buffer += my_nbrlen(map.tab[i].z) + 1;
+      map.tab[i] = sfVector_from3f(x * 75, y * 75, ((float) my_atoi(buffer) + ((perlin2d(x + inc, y, 0.15, 6) - 0.5) * 10)) * 60);
+      buffer += my_nbrlen(my_atoi(buffer)) + 1;
       i++;
       x++;
     }
-  inc++;
+  inc += inc_;
   return (map);
 }
 
@@ -77,7 +79,7 @@ t_map	parse_buffer(char *path)
 
   w = -1;
   h = 0;
-  if ((buffer = malloc(sizeof(char) * (1025))) == NULL)
+  if ((buffer = malloc(sizeof(char) * (32769))) == NULL)
     return (map);
   read_file(path, buffer);
   get_map_size(buffer, &w, &h);

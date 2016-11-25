@@ -11,6 +11,9 @@
 #include <math.h>
 #include "my_sfml.h"
 
+float	alpha_;
+float	omega_;
+
 void	my_draw_line(t_my_framebuffer *fb, sfVector2f from, sfVector2f to, sfColor color)
 {
   float	x;
@@ -38,12 +41,26 @@ void	my_draw_line(t_my_framebuffer *fb, sfVector2f from, sfVector2f to, sfColor 
     }
 }
 
-void    my_draw_line_3d(t_my_framebuffer *fb, sfVector3f a, sfVector3f b, sfColor color)
+void		my_draw_line_3d(t_my_framebuffer *fb, sfVector3f a, sfVector3f b, sfColor color)
 {
-  sfVector2f  a2;
-  sfVector2f  b2;
+  sfVector2f	a2;
+  sfVector2f	b2;
+  int		cond = 2;
 
-  a2 = my_convert_point(a, 220, 220);
-  b2 = my_convert_point(b, 220, 220);
+  if (cond == 1)
+    {
+      a2 = my_parallel_projection(a, 30);
+      b2 = my_parallel_projection(b, 30);
+    }
+  else if (cond == 2)
+    {
+      a2 = my_orthogonal_projection(a, omega_, alpha_);
+      b2 = my_orthogonal_projection(b, omega_, alpha_);
+    }
+  else
+    {
+      a2 = my_isometric_projection(a);
+      b2 = my_isometric_projection(b);
+    }
   my_draw_line(fb, a2, b2, color);
 }

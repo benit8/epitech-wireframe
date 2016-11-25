@@ -64,7 +64,9 @@ void			my_draw_line_3d(t_my_framebuffer *fb,
 					sfVector3f a,
 					sfVector3f b,
 					sfColor color);
-void			my_draw_grid(t_my_framebuffer *fb, int width, int height);
+void			my_draw_grid(t_my_framebuffer *fb,
+				     int width,
+				     int height);
 void			my_join_points(t_my_framebuffer *fb, t_map map);
 
 #endif

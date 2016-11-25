@@ -10,12 +10,12 @@
 
 #include "my_sfml.h"
 
-void  my_join_points(t_my_framebuffer *framebuffer, t_map map)
+void	my_join_points(t_my_framebuffer *framebuffer, t_map map)
 {
-  int i;
-  int j;
-  int w;
-  int h;
+  int	i;
+  int	j;
+  int	w;
+  int	h;
 
   w = map.width;
   h = map.height;

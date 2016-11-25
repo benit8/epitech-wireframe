@@ -23,12 +23,12 @@ typedef struct		s_my_framebuffer
   int			height;
 }			t_my_framebuffer;
 
-typedef struct	s_map
+typedef struct		s_map
 {
-  sfVector3f	*tab;
-  int		width;
-  int		height;
-}		t_map;
+  sfVector3f		*tab;
+  int			width;
+  int			height;
+}			t_map;
 
 typedef struct		s_init
 {
@@ -46,26 +46,21 @@ sfVector3f		sfVector_from3f(float x, float y, float z);
 t_my_framebuffer	*my_framebuffer_create(int width, int height);
 void			empty_framebuffer(t_my_framebuffer *fb);
 sfColor			my_color_add(sfColor color1, sfColor color2);
-void			my_put_pixel(t_my_framebuffer *fb,
-				     int x,
-				     int y,
-				     sfColor color);
-void			my_put_square(t_my_framebuffer *fb,
-				      sfVector2f coords,
-				      sfVector2f size,
-				      sfColor color);
-void			my_draw_line(t_my_framebuffer *fb,
-				     sfVector2f from,
-				     sfVector2f to,
-				     sfColor color);
-sfVector2f		my_convert_point(sfVector3f point,
-					 int width,
-					 int height);
-void			my_draw_line_3d(t_my_framebuffer *fb,
-					sfVector3f a,
-					sfVector3f b,
-					sfColor color);
+void			my_put_pixel(t_my_framebuffer *fb, int x, int y, sfColor color);
+void			my_put_square(t_my_framebuffer *fb, sfVector2f coords, sfVector2f size, sfColor color);
+void			my_draw_line(t_my_framebuffer *fb, sfVector2f from, sfVector2f to, sfColor color);
+sfVector2f		my_orthogonal_projection(sfVector3f pos3d, float omega, float alpha);
+sfVector2f		my_parallel_projection(sfVector3f pos3d, float angle);
+sfVector2f		my_isometric_projection(sfVector3f pos3d);
+void			my_draw_line_3d(t_my_framebuffer *fb, sfVector3f a, sfVector3f b, sfColor color);
 void			my_draw_grid(t_my_framebuffer *fb, int width, int height);
 void			my_join_points(t_my_framebuffer *fb, t_map map);
+
+extern int		orig_x;
+extern int		orig_y;
+
+extern float		alpha_;
+extern float		omega_;
+extern float		factor_;
 
 #endif

@@ -5,7 +5,7 @@
 ## Login   <benoit.lormeau@epitech.net>
 ## 
 ## Started on  Mon Nov 14 18:08:58 2016 Benoit Lormeau
-## Last update Fri Nov 18 16:47:20 2016 Benoit Lormeau
+## Last update Thu Nov 24 14:47:22 2016 Benoit Lormeau
 ##
 
 CC	=	gcc
@@ -15,7 +15,7 @@ RM	=	rm -f
 CFLAGS	+=	-W -Wall -Werror -Wextra
 CFLAGS	+=	-Iinclude/
 CFLAGS	+=	-lc_graph_prog
-CFLAGS	+=	-Llib -lcsfml -lmy
+CFLAGS	+=	-Llib -lmysfml -lmy -lm
 
 SRC	=	src/main.c		\
 		src/buffer.c		\
@@ -32,7 +32,7 @@ $(NAME): $(OBJ)
 
 lib:
 	cd lib/my && make
-	cd lib/csfml && make
+	cd lib/mysfml && make
 
 clean:
 	$(RM) $(OBJ)
@@ -40,7 +40,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re: fclean lib all
 
 gen:
 	gcc -o misc/gen misc/generate_wf.c

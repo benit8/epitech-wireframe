@@ -10,7 +10,7 @@
 
 #include "buffer.h"
 
-char	*read_file(char *path, char *buffer)
+char	*read_file(char *path, char buffer[1024])
 {
   int	fd;
   int	bytes;
@@ -54,22 +54,20 @@ t_map	parse_buffer(char *path)
   int	i;
   int	w;
   int	h;
-  char	*buffer;
+  char	buffer[1024];
   t_map	map;
 
   w = -1;
   h = 0;
   i = 0;
-  if ((buffer = malloc(sizeof(char) * (1025))) == NULL)
-    return (map);
   read_file(path, buffer);
   while (buffer[i] != '\0')
     {
       if (buffer[i] == '\n')
-        {
-          h++;
-          w = (w == -1) ? (i / 2) : w;
-        }
+	{
+	  h++;
+	  w = (w == -1) ? (i / 2) : w;
+	}
       i++;
     }
   map.width = w;
