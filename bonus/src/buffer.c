@@ -8,6 +8,7 @@
 ** Last update Tue Nov 15 19:27:15 2016 Benoit Lormeau
 */
 
+#include <math.h>
 #include "buffer.h"
 #include "perlin.h"
 
@@ -21,7 +22,7 @@ char	*read_file(char *path, char *buffer)
   fd = open(path, O_RDONLY);
   if (fd < 3)
     return (NULL);
-  bytes = read(fd, buffer, 32768);
+  bytes = read(fd, buffer, 8388608);
   buffer[bytes] = '\0';
   close(fd);
   return (buffer);
@@ -48,7 +49,7 @@ t_map		fill_map(char *buffer, t_map map)
   int		i;
   int		x;
   int		y;
-  static float inc;
+  static float	inc;
 
   i = 0;
   x = 0;
@@ -61,7 +62,7 @@ t_map		fill_map(char *buffer, t_map map)
 	  x = 0;
 	  buffer++;
 	}
-      map.tab[i] = sfVector_from3f(x * 75, y * 75, ((float) my_atoi(buffer) + ((perlin2d(x + inc, y, 0.15, 6) - 0.5) * 10)) * 60);
+      map.tab[i] = sfVector_from3f(x, y, (double) my_atoi(buffer) + pow((perlin2d(x + inc, y, 0.1, 3)), 4) * 10);
       buffer += my_nbrlen(my_atoi(buffer)) + 1;
       i++;
       x++;
@@ -79,7 +80,7 @@ t_map	parse_buffer(char *path)
 
   w = -1;
   h = 0;
-  if ((buffer = malloc(sizeof(char) * (32769))) == NULL)
+  if ((buffer = malloc(sizeof(char) * (8388609))) == NULL)
     return (map);
   read_file(path, buffer);
   get_map_size(buffer, &w, &h);

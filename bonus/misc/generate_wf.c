@@ -4,7 +4,7 @@
 #include <math.h>
 #include <time.h>
 
-static long long SEED = 22;
+static long long SEED = 69;
 static int hash[]   =	{208,  34, 231, 213,  32, 248, 233,  56, 161,  78,  24, 140,  71,  48, 140, 254, 245, 255, 247, 247,  40,
 			 185, 248, 251, 245,  28, 124, 204, 204,  76,  36,   1, 107,  28, 234, 163, 202, 224, 245, 128, 167, 204,
 			   9,  92, 217,  54, 239, 174, 173, 102, 193, 189, 190, 121, 100, 108, 167,  44,  43,  77, 180, 204,   8,
@@ -86,15 +86,13 @@ int	main(int ac, char **av)
       {
 	for (float j = 0; j < w; ++j)
 	  {
-	    printf("%d", (int) (perlin2d(i, j, 0.5, 4) * 6));
+	    // printf("%d", (int) (perlin2d(i, j, 0.5, 4) * 6));
+	    printf("0");
 	    if (i != h - 1 || j != w - 1)
 	      printf(",");
-	    if (j != w - 1)
-	      printf(" ");
 	  }
 	printf("\n");
       }
-    printf("\n");
   }
 
   return (EXIT_SUCCESS);

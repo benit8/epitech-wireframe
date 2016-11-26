@@ -5,13 +5,15 @@
 ## Login   <benoit.lormeau@epitech.eu>
 ##
 ## Started on  Fri Oct 18 16:52:27 2016 Benoit Lormeau
-## Last update Fri Nov 18 19:24:04 2016 Benoit Lormeau
+## Last update Sat Nov 26 00:20:03 2016 Benoit Lormeau
 ##
 
 CFLAGS	+=	-I../../include/
 
 SRC	=	my_atoi.c		\
-		my_nbrlen.c
+		my_nbrlen.c		\
+		my_map.c		\
+		my_swap.c
 
 OBJ	=	$(SRC:.c=.o)
 

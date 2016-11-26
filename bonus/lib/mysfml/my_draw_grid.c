@@ -36,3 +36,18 @@ void		my_draw_grid(t_my_framebuffer *fb, int width, int height)
       my_draw_line_3d(fb, a, b, color);
     }
 }
+
+void		my_draw_heights(t_my_framebuffer *framebuffer, t_map map)
+{
+  sfVector3f		l;
+  sfColor		color;
+  int			i;
+  
+  color = sfColor_fromRGBA(90, 90, 90, 255);
+  i = -1;
+  while (++i < (map.width * map.height))
+    {
+      l = sfVector_from3f(map.tab[i].x, map.tab[i].y, 0);
+      my_draw_line_3d(framebuffer, l, map.tab[i], color);
+    }
+}
