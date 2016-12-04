@@ -18,6 +18,9 @@
 #define 		WIDTH	1920
 #define 		HEIGHT	1030
 
+#define			MAP_W	200
+#define			MAP_H	200
+
 #define	 ipart_(X)	((int)(X))
 #define	 round_(X)	((int)(((double)(X)) + 0.5))
 #define	 fpart_(X)	(((double)(X)) - (double) ipart_(X))

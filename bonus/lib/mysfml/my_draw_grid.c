@@ -42,7 +42,7 @@ void		my_draw_heights(t_my_framebuffer *framebuffer, t_map map)
   sfVector3f		l;
   sfColor		color;
   int			i;
-  
+
   color = sfColor_fromRGBA(90, 90, 90, 255);
   i = -1;
   while (++i < (map.width * map.height))

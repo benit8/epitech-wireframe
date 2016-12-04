@@ -12,6 +12,8 @@
 #include "buffer.h"
 #include "perlin.h"
 
+#define	BSIZE	1048576
+
 float	inc_;
 
 char	*read_file(char *path, char *buffer)
@@ -22,7 +24,7 @@ char	*read_file(char *path, char *buffer)
   fd = open(path, O_RDONLY);
   if (fd < 3)
     return (NULL);
-  bytes = read(fd, buffer, 100000);
+  bytes = read(fd, buffer, BSIZE);
   buffer[bytes] = '\0';
   close(fd);
   return (buffer);
@@ -80,7 +82,7 @@ t_map	parse_buffer(char *path)
 
   w = -1;
   h = 0;
-  if ((buffer = malloc(sizeof(char) * (100001))) == NULL)
+  if ((buffer = malloc(sizeof(char) * (BSIZE + 1))) == NULL)
     return (map);
   read_file(path, buffer);
   get_map_size(buffer, &w, &h);
