@@ -26,6 +26,8 @@ void	my_join_points(t_my_framebuffer *framebuffer, t_map map)
         my_draw_line_3d(framebuffer, map.tab[i], map.tab[i + 1], sfBlack);
       if (i < (w * h) - w)
         my_draw_line_3d(framebuffer, map.tab[i], map.tab[i + w], sfBlack);
+      if (((i % w != w - 1) || i == 0) && (i < (w * h) - w))
+        my_draw_line_3d(framebuffer, map.tab[i], map.tab[i + w + 1], sfBlack);
       i++;
     }
 }

@@ -22,11 +22,11 @@ t_my_framebuffer	*my_framebuffer_create(int width, int height)
   return (fb);
 }
 
-void	empty_framebuffer(t_my_framebuffer *fb)
+void	clear_framebuffer(t_my_framebuffer *fb)
 {
   int	i;
 
   i = -1;
   while (++i < (4 * fb->width * fb->height))
-    fb->pixels[i] = 0;
+    fb->pixels[i] = 255;
 }

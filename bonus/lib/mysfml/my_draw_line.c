@@ -127,22 +127,29 @@ void		my_draw_line_3d(t_my_framebuffer *fb, sfVector3f a3, sfVector3f b3, sfColo
 {
   sfVector2f	a2;
   sfVector2f	b2;
-  // float		h;
+  float		h;
 
-  // h = (a3.z + b3.z) / 2;
-  // if (h > 5.5)
-  //   color = sfColor_fromRGB(80, 80, 80);
-  // else if (h > 2)
-  //   color = sfColor_fromRGB(88, 41, 0);
-  // else if (h > 0.1)
-  //   color = sfGreen;
-  // else
-  //   color = sfBlue;
+  h = (a3.z + b3.z) / 2;
+  if (h > 5.5)
+    color = sfColor_fromRGB(80, 80, 80);
+  else if (h > 1.7)
+    color = sfColor_fromRGB(88, 41, 0);
+  else if (h > 0.2)
+    color = sfGreen;
+  else
+    color = sfBlue;
 
   // color.a = my_map(h, 0, 10, 0, 255);
 
+  a3.x -= 25;
+  a3.y -= 25;
+
+  b3.x -= 25;
+  b3.y -= 25;
+
   a2 = my_orthogonal_projection(a3, omega_, alpha_);
   b2 = my_orthogonal_projection(b3, omega_, alpha_);
-  // my_draw_line_aa(fb, a2, b2, color);
-  my_draw_line_aa(fb, a2, b2, (sfColor){color.r, color.g, color.b, my_map((a3.z + b3.z) / 2, 0, 8, 30, 255)});
+  // my_draw_line(fb, a2, b2, color);
+  my_draw_line_aa(fb, a2, b2, color);
+  // my_draw_line_aa(fb, a2, b2, (sfColor){color.r, color.g, color.b, my_map((a3.z + b3.z) / 2, 0, 8, 70, 255)});
 }

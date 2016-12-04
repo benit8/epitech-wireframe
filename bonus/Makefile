@@ -12,14 +12,15 @@ CC	=	gcc
 
 RM	=	rm -f
 
-CFLAGS	+=	-W -Wall -Werror -Wextra
+CFLAGS	+=	-W -Wall -Wextra
 CFLAGS	+=	-Iinclude/
 CFLAGS	+=	-lc_graph_prog
 CFLAGS	+=	-Llib -lmysfml -lmy -lm
 
 SRC	=	src/main.c		\
 		src/buffer.c		\
-		src/perlin.c
+		src/perlin.c		\
+		src/vertex.c
 
 OBJ	=	$(SRC:.c=.o)
 

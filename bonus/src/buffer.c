@@ -22,7 +22,7 @@ char	*read_file(char *path, char *buffer)
   fd = open(path, O_RDONLY);
   if (fd < 3)
     return (NULL);
-  bytes = read(fd, buffer, 8388608);
+  bytes = read(fd, buffer, 100000);
   buffer[bytes] = '\0';
   close(fd);
   return (buffer);
@@ -62,7 +62,7 @@ t_map		fill_map(char *buffer, t_map map)
 	  x = 0;
 	  buffer++;
 	}
-      map.tab[i] = sfVector_from3f(x, y, (double) my_atoi(buffer) + pow((perlin2d(x + inc, y, 0.1, 3)), 4) * 10);
+      map.tab[i] = sfVector_from3f(x, y, (double) my_atoi(buffer) + pow((perlin2d(x + inc, y + inc, 0.1, 3)), 4) * 10);
       buffer += my_nbrlen(my_atoi(buffer)) + 1;
       i++;
       x++;
@@ -80,7 +80,7 @@ t_map	parse_buffer(char *path)
 
   w = -1;
   h = 0;
-  if ((buffer = malloc(sizeof(char) * (8388609))) == NULL)
+  if ((buffer = malloc(sizeof(char) * (100001))) == NULL)
     return (map);
   read_file(path, buffer);
   get_map_size(buffer, &w, &h);

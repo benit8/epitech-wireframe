@@ -12,9 +12,8 @@
 #define MAIN_H_
 
 #include <stdlib.h>
-#include <SFML/Graphics/RenderWindow.h>
-#include <SFML/Graphics/Sprite.h>
-#include <SFML/Graphics/Texture.h>
+#include <math.h>
+#include <SFML/Graphics.h>
 
 #define 		WIDTH	1920
 #define 		HEIGHT	1030
@@ -42,10 +41,14 @@ typedef struct		s_map
 typedef struct		s_init
 {
   sfVideoMode 		mode;
-  sfRenderWindow	*window;
+  sfRenderWindow	*rWindow;
+  sfWindow		*window;
   sfSprite 		*sprite;
   sfTexture 		*texture;
   t_my_framebuffer 	*framebuffer;
+  sfVertexArray		*vertices;
+  sfVertexArray		**vertexTab;
+  sfRenderStates	*states;
 }			t_init;
 
 
@@ -58,7 +61,10 @@ sfVector2f		sfVector_from2f(float x, float y);
 sfVector3f		sfVector_from3f(float x, float y, float z);
 
 t_my_framebuffer	*my_framebuffer_create(int width, int height);
-void			empty_framebuffer(t_my_framebuffer *fb);
+void			clear_framebuffer(t_my_framebuffer *fb);
+
+sfVertexArray		*get_vertexArray(sfVertexArray *vertices, char *path);
+sfVertexArray		*get_vertexArray_line(sfVertexArray *vertices, unsigned int start);
 
 sfColor			my_color_add(sfColor color1, sfColor color2);
 void			my_put_pixel(t_my_framebuffer *fb, int x, int y, sfColor color);
