@@ -13,7 +13,6 @@
 void	my_join_points(t_my_framebuffer *framebuffer, t_map map)
 {
   int	i;
-  int	j;
   int	w;
   int	h;
 

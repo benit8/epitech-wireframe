@@ -36,11 +36,6 @@ t_my_framebuffer	*get_framebuffer(char *path)
 t_init			init(char *path)
 {
   t_init		vars;
-  sfVideoMode		mode;
-  sfRenderWindow	*window;
-  sfSprite		*sprite;
-  sfTexture		*texture;
-  t_my_framebuffer	*framebuffer;
 
   vars.mode.width = 640;
   vars.mode.height = 480;

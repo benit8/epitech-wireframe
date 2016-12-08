@@ -10,6 +10,7 @@
 
 CC	=	gcc
 
+CFLAGS	+=	-W -Wall -Werror -Wextra
 CFLAGS	+=	-Iinclude/
 CFLAGS	+=	-lc_graph_prog
 CFLAGS	+=	-lm

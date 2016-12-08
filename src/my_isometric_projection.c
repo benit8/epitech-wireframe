@@ -13,11 +13,9 @@
 sfVector2f	my_isometric_projection(sfVector3f p)
 {
   sfVector2f	res;
-  float		factor;
   int		xoff;
   int		yoff;
 
-  factor = 1;
   xoff = 300;
   yoff = 150;
   res.x = (p.x / 2 + xoff) - (p.y / 2);

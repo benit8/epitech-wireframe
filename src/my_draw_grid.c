@@ -13,7 +13,6 @@
 void		my_draw_grid(t_my_framebuffer *fb, int width, int height)
 {
   sfColor	color;
-  sfVector3f	**grid;
   sfVector3f	a;
   sfVector3f	b;
   int		i;
