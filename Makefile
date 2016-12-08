@@ -5,7 +5,7 @@
 ## Login   <benoit.lormeau@epitech.net>
 ## 
 ## Started on  Mon Nov 14 18:08:58 2016 Benoit Lormeau
-## Last update Tue Nov 15 14:25:54 2016 Benoit Lormeau
+## Last update Thu Dec  8 18:51:28 2016 Benoit Lormeau
 ##
 
 CC	=	gcc
@@ -17,8 +17,8 @@ CFLAGS	+=	-lm
 
 RM	=	rm -f
 
-SRC	=	main.c				\
-		buffer.c			\
+SRC	=	src/main.c			\
+		src/buffer.c			\
 		src/my_atoi.c			\
 		src/my_nbrlen.c			\
 		src/my_framebuffer.c		\
