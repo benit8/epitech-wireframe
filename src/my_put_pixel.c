@@ -34,7 +34,7 @@ void	my_put_pixel(t_my_framebuffer *fb, int x, int y, sfColor color)
 
   idx = (fb->width * y + x) * 4;
   if (idx >= 0 && idx < (fb->width * fb->height * 4 - 4) &&
-      ((y >= 0 && y < HEIGHT) && (x >= 0 && x < WIDTH)))
+      ((y >= 0 && y < fb->height) && (x >= 0 && x < fb->width)))
     {
       current = sfColor_fromRGBA(fb->pixels[idx + 0],
 				 fb->pixels[idx + 1],
