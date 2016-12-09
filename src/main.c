@@ -46,8 +46,10 @@ t_init		init(char *path)
   vars.sprite = sfSprite_create();
   vars.texture = sfTexture_create(640, 480);
   sfSprite_setTexture(vars.sprite, vars.texture, sfTrue);
-  sfTexture_updateFromPixels(vars.texture, vars.framebuffer->pixels, 640, 480, 0, 0);
-  vars.window = sfRenderWindow_create(vars.mode, "Wireframe", sfResize | sfClose, NULL);
+  sfTexture_updateFromPixels(vars.texture, vars.framebuffer->pixels,
+  			     640, 480, 0, 0);
+  vars.window = sfRenderWindow_create(vars.mode, "Wireframe",
+  				      sfResize | sfClose, NULL);
   return (vars);
 }
 
