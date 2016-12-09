@@ -15,8 +15,9 @@ t_my_framebuffer	*my_framebuffer_create(int width, int height)
   t_my_framebuffer	*fb;
 
   if ((fb = malloc(sizeof(t_my_framebuffer))) == NULL)
-    exit(EXIT_FAILURE);
-  fb->pixels = malloc(4 * width * height);
+    return (NULL);
+  if ((fb->pixels = malloc(4 * width * height)) == NULL)
+    return (NULL);
   fb->width = width;
   fb->height = height;
   return (fb);

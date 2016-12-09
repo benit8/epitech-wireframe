@@ -21,7 +21,8 @@ t_my_framebuffer	*get_framebuffer(char *path)
 
   map = parse_buffer(path);
   color = sfColor_fromRGBA(90, 90, 90, 255);
-  framebuffer = my_framebuffer_create(640, 480);
+  if ((framebuffer = my_framebuffer_create(640, 480)) == NULL)
+    return (NULL);
   my_draw_grid(framebuffer, map.width, map.height);
   i = -1;
   while (++i < (map.width * map.height))
@@ -40,7 +41,8 @@ t_init			init(char *path)
   vars.mode.width = 640;
   vars.mode.height = 480;
   vars.mode.bitsPerPixel = 32;
-  vars.framebuffer = get_framebuffer(path);
+  if ((vars.framebuffer = get_framebuffer(path)) == NULL)
+    return (vars);
   vars.sprite = sfSprite_create();
   vars.texture = sfTexture_create(640, 480);
   sfSprite_setTexture(vars.sprite, vars.texture, sfTrue);
@@ -57,6 +59,8 @@ int			main(int ac, char **av)
   if (ac < 2)
     return (84);
   vars = init(av[1]);
+  if (vars.framebuffer == NULL)
+    return (84);
   while (sfRenderWindow_isOpen(vars.window))
     {
       while (sfRenderWindow_pollEvent(vars.window, &event))
