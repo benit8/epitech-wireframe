@@ -34,9 +34,9 @@ t_my_framebuffer	*get_framebuffer(char *path)
   return (framebuffer);
 }
 
-t_init			init(char *path)
+t_init		init(char *path)
 {
-  t_init		vars;
+  t_init	vars;
 
   vars.mode.width = 640;
   vars.mode.height = 480;
@@ -51,10 +51,10 @@ t_init			init(char *path)
   return (vars);
 }
 
-int			main(int ac, char **av)
+int		main(int ac, char **av)
 {
-  t_init		vars;
-  sfEvent		event;
+  t_init	vars;
+  sfEvent	event;
 
   if (ac < 2)
     return (84);
