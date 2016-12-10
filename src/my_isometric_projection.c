@@ -16,8 +16,8 @@ sfVector2f	my_isometric_projection(sfVector3f p)
   int		xoff;
   int		yoff;
 
-  xoff = 300;
-  yoff = 150;
+  xoff = 0;
+  yoff = 0;
   res.x = (p.x / 2 + xoff) - (p.y / 2);
   res.y = (-p.z / 4 + yoff) + (p.y / 4) + (p.x / 4);
   return (res);

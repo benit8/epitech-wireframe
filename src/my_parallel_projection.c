@@ -20,8 +20,8 @@ sfVector2f	my_parallel_projection(sfVector3f p, float angle)
   int		xoff;
   int		yoff;
 
-  xoff = 200;
-  yoff = 150;
+  xoff = 0;
+  yoff = 0;
   k1 = 1;
   k2 = cos(angle * 3.14159265 / 180.0);
   k3 = 1;
