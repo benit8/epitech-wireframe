@@ -5,15 +5,16 @@
 ## Login   <benoit.lormeau@epitech.net>
 ## 
 ## Started on  Mon Nov 14 18:08:58 2016 Benoit Lormeau
-## Last update Thu Dec  8 18:51:28 2016 Benoit Lormeau
+## Last update Thu Oct  5 13:43:23 2017 Benoit Lormeau
 ##
 
 CC	=	gcc
 
-CFLAGS	+=	-W -Wall -Werror -Wextra
+CFLAGS	+=	-W -Wall -Wextra
 CFLAGS	+=	-Iinclude/
-CFLAGS	+=	-lc_graph_prog
-CFLAGS	+=	-lm
+
+LDFLAGS	+=	-lcsfml-graphics
+LDFLAGS	+=	-lm
 
 RM	=	rm -f
 
@@ -38,7 +39,7 @@ NAME	=	wireframe
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) -W -Wall -Werror -Wextra -Iinclude/ -lc_graph_prog -lm
+	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
 
 clean:
 	$(RM) $(OBJ)

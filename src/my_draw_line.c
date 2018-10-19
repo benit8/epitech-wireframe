@@ -38,10 +38,10 @@ void	my_draw_line(t_my_framebuffer *fb, sfVector2f from, sfVector2f to, sfColor 
     }
 }
 
-void    my_draw_line_3d(t_my_framebuffer *fb, sfVector3f a, sfVector3f b, sfColor color)
+void		my_draw_line_3d(t_my_framebuffer *fb, sfVector3f a, sfVector3f b, sfColor color)
 {
-  sfVector2f  a2;
-  sfVector2f  b2;
+  sfVector2f	a2;
+  sfVector2f	b2;
 
   a2 = my_parallel_projection(a, 30);
   b2 = my_parallel_projection(b, 30);

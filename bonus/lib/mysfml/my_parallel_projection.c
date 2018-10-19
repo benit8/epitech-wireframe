@@ -11,6 +11,11 @@
 #include <math.h>
 #include "my_sfml.h"
 
+float		hFactor;
+float		xRotate;
+float		yRotate;
+float		zRotate;
+
 sfVector2f	my_parallel_projection(sfVector3f p, float angle)
 {
   sfVector2f	res;
@@ -20,12 +25,12 @@ sfVector2f	my_parallel_projection(sfVector3f p, float angle)
   int		xoff;
   int		yoff;
 
-  xoff = 200;
-  yoff = 150;
+  xoff = 450;
+  yoff = 400;
   k1 = 1;
   k2 = cos(angle * 3.14159265 / 180.0);
   k3 = 1;
   res.x = (p.x * k1 + xoff) - (p.y * (k2 / 2));
-  res.y = (-p.z * (k3 / 4) + yoff) + (p.y * (k2 / 2));
+  res.y = (-p.z * (k3 / hFactor) + yoff) + (p.y * (k2 / yRotate));
   return (res);
 }
